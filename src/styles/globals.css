@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Accent color is injected at runtime from settings (rgb channels). */
+  --accent: 99 102 241;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Allow text selection inside content areas that opt in. */
+.selectable,
+input,
+textarea {
+  user-select: text;
+}
+
+@layer components {
+  /* Frosted glass panel used across the OS chrome. */
+  .glass {
+    @apply bg-white/10 backdrop-blur-2xl border border-white/15;
+  }
+  .glass-strong {
+    @apply bg-slate-900/60 backdrop-blur-2xl border border-white/10;
+  }
+  .glass-light {
+    @apply bg-white/70 backdrop-blur-2xl border border-black/10;
+  }
+}
+
+/* Custom slim scrollbars for app content. */
+.scroll-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: rgb(148 163 184 / 0.4);
+  border-radius: 9999px;
+}
+.scroll-thin::-webkit-scrollbar-thumb:hover {
+  background: rgb(148 163 184 / 0.7);
+}
+
+/* Light/dark text defaults handled by the .dark class on the OS root. */
+.os-root {
+  color: #e2e8f0;
+}
+.os-root.light {
+  color: #0f172a;
+}
